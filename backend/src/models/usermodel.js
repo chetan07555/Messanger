@@ -1,25 +1,27 @@
-import { string } from "i/lib/util";
 import mongoose from "mongoose";
-import { type } from "os";
 
-export const Userschema=new mongoose.Schema({
-    email:{
-        type:string,
-        required:true,
-        unique:true
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    name:{
-        type:string,
-        required:true
+    name: {
+      type: String,
+      required: true,
     },
-    image:{
-        type:string,
-        required:true
+    image: {
+      type: String,
+      required: true,
     },
-    clerkId:{
-        type:string,
-        required:true,
-        unique:true
-    }
-},{timestamps:true})
-export const User=mongoose.model("User",Userschema);
+    clerkId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+  },
+  { timestamps: true }
+);
+
+export const User = mongoose.model("User", userSchema);

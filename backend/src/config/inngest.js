@@ -1,4 +1,4 @@
-
+import { User } from "../models/usermodel.js"; 
 import { Inngest } from "inngest";
 import { connectdb } from "./db.js";
 
@@ -26,6 +26,7 @@ const deleteUserfromdb=inngest.createFunction(
     {id:"sync-user-from-db"},
     {event:"clerk/user.deleted"},
     async ({event})=>{
+        await connectdb()
         const {id}=event.data
         await User.deleteOne({clerkId:id})
         //todo two more things
